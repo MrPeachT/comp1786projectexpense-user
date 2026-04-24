@@ -78,10 +78,6 @@
                 AutoSize="TextChanges"
                 HeightRequest="100" />
 
-            <Entry
-                x:Name="entryLocation"
-                Placeholder="Location (Optional)" />
-
             <ActivityIndicator
                 x:Name="loadingIndicator"
                 IsVisible="False"

@@ -30,7 +30,6 @@ public partial class AddExpensePage : ContentPage
             string claimant = entryClaimant.Text?.Trim() ?? string.Empty;
             string paymentStatus = pickerPaymentStatus.SelectedItem?.ToString() ?? string.Empty;
             string description = editorDescription.Text?.Trim() ?? string.Empty;
-            string location = entryLocation.Text?.Trim() ?? string.Empty;
 
             if (string.IsNullOrWhiteSpace(expenseId))
             {
@@ -109,7 +108,6 @@ public partial class AddExpensePage : ContentPage
                 Claimant = claimant,
                 PaymentStatus = paymentStatus,
                 Description = description,
-                Location = location,
                 ImagePath = string.Empty,
                 LastModified = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
                 Synced = 1
