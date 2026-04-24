@@ -22,7 +22,7 @@ public partial class AddExpensePage : ContentPage
             ShowLoading(true);
 
             string expenseId = entryExpenseId.Text?.Trim() ?? string.Empty;
-            string dateOfExpense = entryDate.Text?.Trim() ?? string.Empty;
+            string dateOfExpense = (datePickerExpense.Date ?? DateTime.Today).ToString("yyyy-MM-dd");
             string amountText = entryAmount.Text?.Trim() ?? string.Empty;
             string currency = entryCurrency.Text?.Trim() ?? string.Empty;
             string expenseType = pickerExpenseType.SelectedItem?.ToString() ?? string.Empty;
@@ -34,23 +34,6 @@ public partial class AddExpensePage : ContentPage
             if (string.IsNullOrWhiteSpace(expenseId))
             {
                 await DisplayAlert("Validation Error", "Expense ID is required.", "OK");
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(dateOfExpense))
-            {
-                await DisplayAlert("Validation Error", "Date of Expense is required.", "OK");
-                return;
-            }
-
-            if (!DateTime.TryParseExact(
-                    dateOfExpense,
-                    "yyyy-MM-dd",
-                    CultureInfo.InvariantCulture,
-                    DateTimeStyles.None,
-                    out _))
-            {
-                await DisplayAlert("Validation Error", "Date must be in YYYY-MM-DD format.", "OK");
                 return;
             }
 

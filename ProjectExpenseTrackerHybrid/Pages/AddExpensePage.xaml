@@ -19,9 +19,9 @@
                 x:Name="entryExpenseId"
                 Placeholder="Expense ID" />
 
-            <Entry
-                x:Name="entryDate"
-                Placeholder="Date of Expense (YYYY-MM-DD)" />
+            <DatePicker
+                x:Name="datePickerExpense"
+                Format="yyyy-MM-dd" />
 
             <Entry
                 x:Name="entryAmount"
