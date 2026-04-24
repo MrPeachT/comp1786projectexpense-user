@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ProjectExpenseTrackerHybrid.Pages.ExpenseListPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Expenses"
+    BackgroundColor="#F5F7FB">
+
+    <Grid Padding="20" RowDefinitions="Auto,Auto,Auto,*" RowSpacing="14">
+
+        <Label
+            Grid.Row="0"
+            x:Name="lblProjectTitle"
+            Text="Expenses"
+            FontSize="26"
+            FontAttributes="Bold"
+            TextColor="#1F3C88" />
+
+        <Button
+            Grid.Row="1"
+            Text="Add Expense"
+            Clicked="AddExpense_Clicked"
+            BackgroundColor="#1F3C88"
+            TextColor="White"
+            CornerRadius="12"
+            HeightRequest="48" />
+
+        <VerticalStackLayout Grid.Row="2" Spacing="8">
+            <ActivityIndicator
+                x:Name="loadingIndicator"
+                IsVisible="False"
+                IsRunning="False"
+                Color="#1F3C88"
+                HorizontalOptions="Center" />
+
+            <Label
+                x:Name="lblEmptyState"
+                Text="No expenses available."
+                IsVisible="False"
+                HorizontalOptions="Center"
+                TextColor="#7A7A7A"
+                FontSize="16" />
+        </VerticalStackLayout>
+
+        <CollectionView
+            Grid.Row="3"
+            x:Name="expensesCollectionView"
+            Margin="0,4,0,0">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        Margin="0,0,0,12"
+                        Padding="14"
+                        CornerRadius="16"
+                        BackgroundColor="White"
+                        HasShadow="True">
+
+                        <VerticalStackLayout Spacing="6">
+                            <Label
+                                Text="{Binding ExpenseId}"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="#1F3C88" />
+
+                            <Label
+                                Text="{Binding Amount, StringFormat='Amount: {0:N0}'}"
+                                FontSize="14"
+                                TextColor="#333333" />
+
+                            <Label
+                                Text="{Binding Currency, StringFormat='Currency: {0}'}"
+                                FontSize="14"
+                                TextColor="#333333" />
+
+                            <Label
+                                Text="{Binding ExpenseType, StringFormat='Type: {0}'}"
+                                FontSize="14"
+                                TextColor="#333333" />
+
+                            <Label
+                                Text="{Binding DateOfExpense, StringFormat='Date: {0}'}"
+                                FontSize="14"
+                                TextColor="#333333" />
+
+                            <Label
+                                Text="{Binding Claimant, StringFormat='Claimant: {0}'}"
+                                FontSize="14"
+                                TextColor="#333333" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

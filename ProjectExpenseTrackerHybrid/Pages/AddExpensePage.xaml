@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ProjectExpenseTrackerHybrid.Pages.AddExpensePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Add Expense"
+    BackgroundColor="#F5F7FB">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="12">
+
+            <Label
+                Text="Add Expense"
+                FontSize="26"
+                FontAttributes="Bold"
+                TextColor="#1F3C88" />
+
+            <Entry
+                x:Name="entryExpenseId"
+                Placeholder="Expense ID" />
+
+            <Entry
+                x:Name="entryDate"
+                Placeholder="Date of Expense (YYYY-MM-DD)" />
+
+            <Entry
+                x:Name="entryAmount"
+                Placeholder="Amount"
+                Keyboard="Numeric" />
+
+            <Entry
+                x:Name="entryCurrency"
+                Placeholder="Currency (e.g. VND, USD)" />
+
+            <Picker
+                x:Name="pickerExpenseType"
+                Title="Select Expense Type">
+                <Picker.Items>
+                    <x:String>Travel</x:String>
+                    <x:String>Equipment</x:String>
+                    <x:String>Materials</x:String>
+                    <x:String>Services</x:String>
+                    <x:String>Software/Licenses</x:String>
+                    <x:String>Labour costs</x:String>
+                    <x:String>Utilities</x:String>
+                    <x:String>Miscellaneous</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Picker
+                x:Name="pickerPaymentMethod"
+                Title="Select Payment Method">
+                <Picker.Items>
+                    <x:String>Cash</x:String>
+                    <x:String>Credit Card</x:String>
+                    <x:String>Bank Transfer</x:String>
+                    <x:String>Cheque</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Entry
+                x:Name="entryClaimant"
+                Placeholder="Claimant" />
+
+            <Picker
+                x:Name="pickerPaymentStatus"
+                Title="Select Payment Status">
+                <Picker.Items>
+                    <x:String>Paid</x:String>
+                    <x:String>Pending</x:String>
+                    <x:String>Reimbursed</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Editor
+                x:Name="editorDescription"
+                Placeholder="Description (Optional)"
+                AutoSize="TextChanges"
+                HeightRequest="100" />
+
+            <Entry
+                x:Name="entryLocation"
+                Placeholder="Location (Optional)" />
+
+            <ActivityIndicator
+                x:Name="loadingIndicator"
+                IsVisible="False"
+                IsRunning="False"
+                Color="#1F3C88"
+                HorizontalOptions="Center" />
+
+            <Button
+                Text="Save Expense"
+                Clicked="SaveExpense_Clicked"
+                BackgroundColor="#1F3C88"
+                TextColor="White"
+                CornerRadius="12"
+                HeightRequest="50" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

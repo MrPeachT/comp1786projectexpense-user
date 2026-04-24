@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ProjectExpenseTrackerHybrid.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Projects"
+    BackgroundColor="#F5F7FB">
+
+    <Grid Padding="20" RowDefinitions="Auto,Auto,Auto,Auto,*" RowSpacing="16">
+
+        <Label
+            Grid.Row="0"
+            Text="Project Expense Tracker"
+            FontSize="28"
+            FontAttributes="Bold"
+            TextColor="#1F3C88" />
+
+        <Label
+            Grid.Row="1"
+            Text="User App"
+            FontSize="14"
+            TextColor="#5C6B8A" />
+
+        <SearchBar
+            Grid.Row="2"
+            x:Name="searchBarProjects"
+            Placeholder="Search project by name, code, or date"
+            TextChanged="SearchBarProjects_TextChanged" />
+
+        <VerticalStackLayout Grid.Row="3" Spacing="12">
+            <Button
+                Text="Refresh Projects"
+                Clicked="RefreshProjects_Clicked"
+                BackgroundColor="#1F3C88"
+                TextColor="White"
+                CornerRadius="12"
+                HeightRequest="48" />
+
+            <ActivityIndicator
+                x:Name="loadingIndicator"
+                IsVisible="False"
+                IsRunning="False"
+                Color="#1F3C88"
+                HorizontalOptions="Center" />
+
+            <Label
+                x:Name="lblEmptyState"
+                Text="No projects available."
+                FontSize="16"
+                TextColor="#7A7A7A"
+                IsVisible="False"
+                HorizontalOptions="Center" />
+        </VerticalStackLayout>
+
+        <CollectionView
+            Grid.Row="4"
+            x:Name="projectsCollectionView"
+            SelectionMode="None">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        Margin="0,0,0,12"
+                        Padding="14"
+                        CornerRadius="16"
+                        BackgroundColor="White"
+                        HasShadow="True">
+
+                        <VerticalStackLayout Spacing="6">
+                            <Label
+                                Text="{Binding ProjectName}"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                TextColor="#1F3C88" />
+
+                            <Button
+                                Text="{Binding FavouriteText}"
+                                Clicked="FavouriteButton_Clicked"
+                                CommandParameter="{Binding .}"
+                                BackgroundColor="#E8EEFF"
+                                TextColor="#1F3C88"
+                                CornerRadius="10"
+                                HeightRequest="40" />
+
+                            <Button
+                                Text="View Detail"
+                                Clicked="ViewDetail_Clicked"
+                                CommandParameter="{Binding .}"
+                                BackgroundColor="#1F3C88"
+                                TextColor="White"
+                                CornerRadius="10"
+                                HeightRequest="40" />
+
+                            <Label
+                                Text="{Binding ProjectCode, StringFormat='Code: {0}'}"
+                                FontSize="14"
+                                TextColor="#333333" />
+
+                            <Label
+                                Text="{Binding ProjectManager, StringFormat='Manager: {0}'}"
+                                FontSize="14"
+                                TextColor="#333333" />
+
+                            <Label
+                                Text="{Binding ProjectStatus, StringFormat='Status: {0}'}"
+                                FontSize="14"
+                                TextColor="#333333" />
+
+                            <Label
+                                Text="{Binding StartDate, StringFormat='Start Date: {0}'}"
+                                FontSize="14"
+                                TextColor="#333333" />
+
+                            <Label
+                                Text="{Binding ProjectBudget, StringFormat='Budget: {0:N0} VND'}"
+                                FontSize="14"
+                                TextColor="#333333" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

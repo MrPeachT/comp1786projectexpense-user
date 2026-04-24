@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ProjectExpenseTrackerHybrid.Pages.ProjectDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Project Detail"
+    BackgroundColor="#F5F7FB">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="12">
+
+            <Label
+                Text="{Binding ProjectName}"
+                FontSize="26"
+                FontAttributes="Bold"
+                TextColor="#1F3C88" />
+
+            <Label Text="{Binding ProjectCode, StringFormat='Code: {0}'}" />
+            <Label Text="{Binding ProjectManager, StringFormat='Manager: {0}'}" />
+            <Label Text="{Binding ProjectStatus, StringFormat='Status: {0}'}" />
+            <Label Text="{Binding StartDate, StringFormat='Start Date: {0}'}" />
+            <Label Text="{Binding EndDate, StringFormat='End Date: {0}'}" />
+
+            <Label
+                Text="{Binding ProjectBudget, StringFormat='Budget: {0:N0} VND'}"
+                FontAttributes="Bold"
+                TextColor="#333333" />
+
+            <Label
+                Text="Description:"
+                FontAttributes="Bold"
+                Margin="0,10,0,0" />
+
+            <Label Text="{Binding ProjectDescription}" />
+
+            <!-- BUTTON CHO STEP SAU -->
+            <Button
+                Text="View Expenses"
+                Clicked="ViewExpenses_Clicked"
+                BackgroundColor="#1F3C88"
+                TextColor="White"
+                CornerRadius="12"
+                HeightRequest="50"
+                Margin="0,20,0,0"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
